@@ -1,3 +1,4 @@
 import { model } from 'mongoose';
 import { roleSchema } from '../schemas/roleSchema';
-export const Role = model('Role', roleSchema);
+const Role = model('Role', roleSchema);
+export default Role;

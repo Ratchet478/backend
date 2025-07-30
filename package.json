@@ -17,5 +17,13 @@
     "express": "^5.1.0",
     "mongodb": "^6.17.0",
     "mongoose": "^8.16.3"
+  },
+  "imports": {
+    "#controllers/*": "./src/api/controllers/*.js",
+    "#models/*": "./src/api/models/*.js",
+    "#routes/*": "./src/api/routes/*.js",
+    "#schemas/*": "./src/api/schemas/*.js",
+    "#middleware/*": "./src/middleware/*.js",
+    "#services/*": "./src/api/services/*.js"
   }
 }

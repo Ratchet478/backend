@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 import { roleSchema } from './roleSchema.js';
-import { ImageSchema } from './ImageSchema.js';
+import { imageSchema } from './imageSchema.js';
 export const userSchema = new Schema({
     username: {
         type: String,
@@ -21,16 +21,13 @@ export const userSchema = new Schema({
         required: true,
         minlength: 6
     },
-    roles: {
-        type: roleSchema,
-        default: [{ name: 'user', description: 'Default user role', permissions: [{ name: 'default', description: 'default permission' }] }]
-    },
+    roles: [{ type: Schema.Types.ObjectId, ref: 'Role' }],
     profileImage: {
-        type: ImageSchema,
+        type: imageSchema,
         default: null
     },
     images: {
-        type: [ImageSchema],
+        type: [imageSchema],
         default: []
     }
 }, {

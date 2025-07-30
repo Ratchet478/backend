@@ -4,8 +4,28 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "target": "es2020",
-    "module": "es2015",
+    "module": "commonjs",
     "baseUrl": ".",
+    "paths": {
+      "#controllers/*": [
+        "src/api/controllers/*"
+      ],
+      "#models/*": [
+        "src/api/models/*"
+      ],
+      "#routes/*": [
+        "src/api/routes/*"
+      ],
+      "#schemas/*": [
+        "src/api/schemas/*"
+      ],
+      "#middleware/*": [
+        "src/middleware/*"
+      ],
+      "#services/*": [
+        "src/api/services/*"
+      ]
+    }
   },
   "exclude": [
     "dist",

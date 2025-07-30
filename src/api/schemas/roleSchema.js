@@ -14,7 +14,14 @@ export const roleSchema = new Schema({
     },
     permissions: {
         type: [permissionSchema],
-        default: []
+        default: [],
+        validate: {
+            validator: function (value) {
+                const names = value.map(p => p.name);
+                return names.length === new Set(names).size;
+            },
+            message: 'Permissions must be unique per role'
+        }
     }
 }, {
     timestamps: true
