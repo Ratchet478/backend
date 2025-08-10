@@ -9,14 +9,25 @@ connectDB();
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+const user = import('./src/api/models/User.js')
+
 const router = express.Router();
 
+const getUsers = async (req, res) => {
+    try {
+        const users = await user.find();
+        return res.status(200).json(users);
+    }
+    catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
 
-app.use('/users', userRoutes);
-app.use((err, req, res, next) => {
-    return res.status(err.status || 500).json(err.message || 'Unexpected error');
+router.get('/users', getUsers);
+
+app.use('/', router);
+app.use((req, res, next) => {
+    return res.status(404).json("Not Found");
 });
 
 app.listen(PORT, () => {
