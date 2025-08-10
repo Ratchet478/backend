@@ -19,8 +19,8 @@
       "#schemas/*": [
         "src/api/schemas/*"
       ],
-      "#middleware/*": [
-        "src/middleware/*"
+      "#middlewares/*": [
+        "src/middlewares/*"
       ],
       "#services/*": [
         "src/api/services/*"
