@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import { roleSchema } from './roleSchema.js';
+import bcrypt from 'bcrypt';
 import { imageSchema } from './imageSchema.js';
 export const userSchema = new Schema({
     username: {
@@ -33,4 +33,9 @@ export const userSchema = new Schema({
 }, {
     timestamps: true,
     versionKey: false
+});
+
+userSchema.pre('save', function (next) {
+    this.password = bcrypt.hashSync(this.password, 10);
+    next();
 });

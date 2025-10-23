@@ -35,6 +35,10 @@ export async function getUserByUsername(req, res, next) {
 };
 export async function createUser(req, res, next) {
     try {
+        const userExists = await User.findOne({ $or: [{ username: req.body.username }, { email: req.body.email }] });
+        if (userExists) {
+            return res.status(400).json({ message: "Username or email already exists" });
+        }
         const savedUser = await createUserService(req.body);
         return res.status(201).json(savedUser);
     }
