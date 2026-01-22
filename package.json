@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "run": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "seed": "node src/utils/user.seed.js"
   },
   "private": true,
   "devDependencies": {
